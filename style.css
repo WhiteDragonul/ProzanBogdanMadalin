@@ -490,7 +490,7 @@ section { padding: 100px 0; }
     gap: 12px;
 }
 
-/* 12 items = 3 rows of 4 */
+/* Skills grid kept at 4 columns for compact cards */
 
 .skill-item {
     display: flex;
@@ -1235,6 +1235,3 @@ section { padding: 100px 0; }
     section { padding: 72px 0; }
 }
 
-@media (max-width: 768px) {
-    .contact-grid { grid-template-columns: repeat(2, 1fr); }
-}

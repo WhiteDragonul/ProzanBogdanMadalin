@@ -177,9 +177,21 @@ const translations = {
 // ===========================
 // Language switch
 // ===========================
-let currentLang = localStorage.getItem('pb-lang') || 'en';
+const SUPPORTED_LANGS = new Set(Object.keys(translations));
+let currentLang = 'en';
+
+try {
+  const savedLang = localStorage.getItem('pb-lang');
+  if (SUPPORTED_LANGS.has(savedLang)) {
+    currentLang = savedLang;
+  }
+} catch (error) {
+  // Ignore storage access issues (private mode / blocked storage).
+}
 
 function applyLang(lang) {
+  if (!SUPPORTED_LANGS.has(lang)) return;
+
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
     if (translations[lang] && translations[lang][key] !== undefined) {
@@ -190,7 +202,11 @@ function applyLang(lang) {
     btn.classList.toggle('active', btn.dataset.lang === lang);
   });
   document.documentElement.lang = lang;
-  localStorage.setItem('pb-lang', lang);
+  try {
+    localStorage.setItem('pb-lang', lang);
+  } catch (error) {
+    // Ignore storage write errors and continue with in-memory language state.
+  }
   currentLang = lang;
 }
 
@@ -204,8 +220,11 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 const sections = document.querySelectorAll('section[id]');
+let scrollTicking = false;
 
-window.addEventListener('scroll', () => {
+function updateActiveSectionState() {
+  if (!navbar) return;
+
   navbar.classList.toggle('scrolled', window.scrollY > 50);
 
   let current = '';
@@ -216,6 +235,15 @@ window.addEventListener('scroll', () => {
   navLinks.forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
   });
+}
+
+window.addEventListener('scroll', () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  window.requestAnimationFrame(() => {
+    updateActiveSectionState();
+    scrollTicking = false;
+  });
 }, { passive: true });
 
 // ===========================
@@ -224,37 +252,60 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navLinksContainer = document.getElementById('navLinks');
 
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navLinksContainer.classList.toggle('open');
-  document.body.style.overflow = navLinksContainer.classList.contains('open') ? 'hidden' : '';
-});
+function setMobileMenuState(isOpen) {
+  if (!hamburger || !navLinksContainer) return;
+  hamburger.classList.toggle('open', isOpen);
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  navLinksContainer.classList.toggle('open', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
 
-navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navLinksContainer.classList.remove('open');
-    document.body.style.overflow = '';
+if (hamburger && navLinksContainer) {
+  hamburger.addEventListener('click', () => {
+    setMobileMenuState(!navLinksContainer.classList.contains('open'));
   });
-});
+
+  navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => setMobileMenuState(false));
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) setMobileMenuState(false);
+  });
+}
 
 // ===========================
 // Scroll reveal
 // ===========================
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const observer = new IntersectionObserver((entries, instance) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        instance.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  revealElements.forEach(el => observer.observe(el));
+} else {
+  revealElements.forEach(el => el.classList.add('visible'));
+}
 
 // ===========================
 // Background particle animation
 // ===========================
 (function () {
   const canvas = document.getElementById('bg-canvas');
+  if (!canvas || !('getContext' in canvas)) return;
+
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReducedMotion) return;
+
   const PARTICLE_COUNT = 80;
   const CONNECTION_DIST = 130;
   const COLORS = ['rgba(124,58,237,', 'rgba(109,40,217,', 'rgba(6,182,212,', 'rgba(219,39,119,'];
@@ -262,8 +313,14 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   let W, H, particles;
 
   function resize() {
-    W = canvas.width = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    const dpr = window.devicePixelRatio || 1;
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr);
+    canvas.height = Math.floor(H * dpr);
+    canvas.style.width = `${W}px`;
+    canvas.style.height = `${H}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
 
   function rand(min, max) { return Math.random() * (max - min) + min; }
@@ -330,3 +387,4 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Init
 // ===========================
 applyLang(currentLang);
+updateActiveSectionState();
