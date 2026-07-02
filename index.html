@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prozan Bogdan | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background particle canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>PB<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home"         class="nav-link active" data-i18n="nav.home">Home</a></li>
+                <li><a href="#about"        class="nav-link"        data-i18n="nav.about">About</a></li>
+                <li><a href="#education"    class="nav-link"        data-i18n="nav.education">Education</a></li>
+                <li><a href="#projects"     class="nav-link"        data-i18n="nav.projects">Projects</a></li>
+                <li><a href="#achievements" class="nav-link"        data-i18n="nav.achievements">Achievements</a></li>
+                <li><a href="#contact"      class="nav-link"        data-i18n="nav.contact">Contact</a></li>
+            </ul>
+            <div class="lang-switcher" id="langSwitcher">
+                <button type="button" class="lang-btn active" data-lang="en">EN</button>
+                <button type="button" class="lang-btn" data-lang="ro">RO</button>
+            </div>
+            <button type="button" class="hamburger" id="hamburger" aria-label="Menu" aria-controls="navLinks" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-text">
+                <div class="hero-tag reveal" data-i18n="hero.tag">&#x1F44B; Hi, my name is</div>
+                <h1 class="hero-name reveal">Prozan <span class="gradient-text">Bogdan Mădălin</span></h1>
+                <p class="hero-subtitle reveal" data-i18n="hero.subtitle">Engineering Student &amp; Developer</p>
+                <p class="hero-desc reveal" data-i18n="hero.desc"><strong>2nd Year</strong> student at the Faculty of Automation, Computers, Electrical and Electronics Engineering in Galati. Developer, modder, MC and volunteer &mdash; passionate about programming and gaming.</p>
+                <div class="hero-buttons reveal">
+                    <a href="#projects" class="btn btn-primary">
+                        <i class="fas fa-code"></i> <span data-i18n="hero.btn1">My Projects</span>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> <span data-i18n="hero.btn2">Contact</span>
+                    </a>
+                </div>
+                <div class="hero-socials reveal">
+                    <a href="https://github.com/WhiteDragonul" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/whosbogdy" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:borghimada233@gmail.com" class="social-icon" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://discord.gg/jfuR8tqVt" target="_blank" rel="noopener noreferrer" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+        <a href="#about" class="scroll-down" aria-label="Scroll down"><i class="fas fa-chevron-down"></i></a>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2 class="section-title" data-i18n="about.title">About Me</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p data-i18n="about.p1">I&apos;m <strong>Prozan Bogdan-M&#x103;d&#x103;lin</strong>, a 2nd Year student at the <strong>Faculty of Automation, Computers, Electrical and Electronics Engineering</strong> in Galati. I code out of passion &mdash; from Python apps and 2D games, to mods published on NexusMods and web projects. I excel at <strong>prompt engineering</strong>, playtesting, and debugging &mdash; finding bugs in application code and games.</p>
+                    <p data-i18n="about.p2">I have experience in <strong>RE Engine modding</strong> (REFramework + Lua) for the game PRAGMATA, with mods published on NexusMods and used by the community. I&apos;m the founder and IGL of a competitive <strong>Dead by Daylight</strong> eSports team.</p>
+                    <p data-i18n="about.p3">Beyond coding: <strong>MC and presenter</strong> at school events on the stage of the &ldquo;Fani Tardini&rdquo; Dramatic Theatre in Galati, <strong>Erasmus+</strong> participant in Croatia, volunteer with children with Down syndrome, guitarist and competitive ballroom dancer.</p>
+                </div>
+                <div class="skills-section reveal">
+                    <h3 class="skills-title" data-i18n="skills.title">Technologies</h3>
+                    <div class="skills-list">
+                        <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
+                        <div class="skill-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+                        <div class="skill-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+                        <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+                        <div class="skill-item"><i class="fab fa-java"></i><span>Java</span></div>
+                        <div class="skill-item"><i class="fas fa-code"></i><span>C++</span></div>
+                        <div class="skill-item"><i class="fas fa-moon"></i><span>Lua</span></div>
+                        <div class="skill-item"><i class="fas fa-brain"></i><span>Machine Learning</span></div>
+                        <div class="skill-item"><i class="fas fa-gamepad"></i><span>Pygame</span></div>
+                        <div class="skill-item"><i class="fas fa-database"></i><span>SQLite</span></div>
+                        <div class="skill-item"><i class="fas fa-desktop"></i><span>Tkinter</span></div>
+                        <div class="skill-item"><i class="fab fa-git-alt"></i><span>Git</span></div>
+                        <div class="skill-item"><i class="fas fa-code-branch"></i><span>TypeScript</span></div>
+                        <div class="skill-item"><i class="fab fa-react"></i><span>React</span></div>
+                        <div class="skill-item"><i class="fas fa-gear"></i><span>Rust</span></div>
+                        <div class="skill-item"><i class="fas fa-window-maximize"></i><span>Tauri</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="edu.tag">My journey</span>
+                <h2 class="section-title" data-i18n="edu.title">Education</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge" data-i18n="edu.univ.badge">2024 &mdash; Present</div>
+                        <h3 data-i18n="edu.univ.title">Faculty of Automation, Computers, Electrical and Electronics Engineering</h3>
+                        <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> <span data-i18n="edu.univ.location">Galati, Romania</span></p>
+                        <p class="timeline-desc" data-i18n="edu.univ.desc">2nd Year Student. In-depth study of computer science, electronics, automation and computer engineering.</p>
+                        <div class="timeline-tag" data-i18n="edu.univ.tag">University &bull; Year 2</div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge" data-i18n="edu.hs.badge">2020 &mdash; 2024</div>
+                        <h3 data-i18n="edu.hs.title">Theoretical High School &ldquo;Dun&#x103;rea&rdquo;, Gala&#x21B;i</h3>
+                        <p class="timeline-location"><i class="fas fa-map-marker-alt"></i> <span data-i18n="edu.hs.location">Galati, Romania</span></p>
+                        <p class="timeline-desc" data-i18n="edu.hs.desc">Mathematics and Computer Science profile. Main subjects: Computer Science (C++), Mathematics, Physics. Strong foundations in programming, algorithms and logical thinking.</p>
+                        <div class="timeline-tag" data-i18n="edu.hs.tag">High School &bull; Graduated 2024</div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">2025</div>
+                        <h3 data-i18n="edu.cert.title">Online Certifications &mdash; AI &amp; Machine Learning</h3>
+                        <p class="timeline-location"><i class="fas fa-certificate"></i> Kaggle &bull; Building AI</p>
+                        <p class="timeline-desc" data-i18n="edu.cert.desc">Completed courses: <strong>Python</strong> (data structures, functions, libraries), <strong>Intro to Machine Learning</strong> (decision trees, validation), <strong>Intermediate Machine Learning</strong> (XGBoost, pipelines, categorical variables), <strong>Building AI</strong> (AI fundamentals and algorithm applicability).</p>
+                        <div class="timeline-tag" data-i18n="edu.cert.tag">Certification &bull; Kaggle &bull; Building AI</div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-badge">IC3</div>
+                        <h3 data-i18n="edu.ic3.title">IC3 &mdash; Internet and Computing Core Certification</h3>
+                        <p class="timeline-location"><i class="fas fa-globe"></i> <span data-i18n="edu.ic3.location">International Certification</span></p>
+                        <p class="timeline-desc" data-i18n="edu.ic3.desc">Advanced digital skills attested by the international IC3 certification.</p>
+                        <div class="timeline-tag" data-i18n="edu.ic3.tag">International Certification</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="proj.tag">What I&apos;ve built</span>
+                <h2 class="section-title" data-i18n="proj.title">My Projects</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <!-- Featured row 1 — Crowsight standalone -->
+            <div class="featured-projects featured-single">
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-purple"></div>
+                    <div class="card-header">
+                        <div class="card-icon icon-dbd"><i class="fas fa-ghost"></i></div>
+                        <div class="card-badges">
+                            <span class="badge badge-featured" data-i18n="badge.featured">Featured</span>
+                            <span class="badge badge-collab" data-i18n="badge.collab">Collaborative</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Crowsight DBD Overlay</h3>
+                    <p class="card-desc" data-i18n="proj.dbdtool.desc">The most powerful overlay ever built for <strong>Dead by Daylight</strong>. A collaborative open-source project developed on GitHub, engineered in <strong>Rust</strong> with a <strong>Tauri + React + TypeScript</strong> frontend. Designed to give players a competitive edge with real-time data.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Rust</span>
+                        <span class="tech-badge">Tauri</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">GitHub</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://crowsight.vercel.app" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        <a href="https://discord.gg/jfuR8tqVt" target="_blank" rel="noopener noreferrer" class="card-link card-link-discord">
+                            <i class="fab fa-discord"></i> <span data-i18n="link.discord">Discord Server</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured row 2 — 1v1 timer and HeartSync -->
+            <div class="featured-projects">
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-purple"></div>
+                    <div class="card-header">
+                        <div class="card-icon"><i class="fas fa-skull-crossbones"></i></div>
+                        <div class="card-badges">
+                            <span class="badge badge-featured" data-i18n="badge.featured">Featured</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">CrowSight 1v1 timer</h3>
+                    <p class="card-desc" data-i18n="proj.dbd.desc">Desktop timer overlay for <strong>Dead by Daylight</strong> built in C#. Provides precise real-time timer information during gameplay to help players make better decisions.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">C#</span>
+                        <span class="tech-badge">Desktop App</span>
+                        <span class="tech-badge">Dead by Daylight</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://discord.gg/jfuR8tqVt" target="_blank" rel="noopener noreferrer" class="card-link card-link-discord">
+                            <i class="fab fa-discord"></i> <span data-i18n="link.discord">Discord Server</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-pink"></div>
+                    <div class="card-header">
+                        <div class="card-icon icon-pink"><i class="fas fa-heart"></i></div>
+                        <div class="card-badges">
+                            <span class="badge badge-featured" data-i18n="badge.featured">Featured</span>
+                            <span class="badge badge-web">Web App</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">HeartSync <span class="card-subtitle">Dating Platform</span></h3>
+                    <p class="card-desc" data-i18n="proj.dating.desc">Dating web app built with JavaScript, CSS, HTML and Python/SQL for the backend. University project with structured interface and user-friendly design.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">SQL</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/WhiteDragonul/dating-ai-unitbv" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-cyan"></div>
+                    <div class="card-header">
+                        <div class="card-icon icon-cyan"><i class="fas fa-utensils"></i></div>
+                        <div class="card-badges">
+                            <span class="badge badge-featured" data-i18n="badge.featured">Featured</span>
+                        </div>
+                    </div>
+                    <h3 class="card-title">Culinary Vitality <span class="card-subtitle">Cooking App</span></h3>
+                    <p class="card-desc">Advanced cooking application built with <strong>TypeScript</strong> and <strong>Rust</strong> using <strong>Tauri</strong>. Features an integrated database and intelligent algorithm that calculates nutritional information (calories) for meals and detects ingredients automatically.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">Rust</span>
+                        <span class="tech-badge">Tauri</span>
+                        <span class="tech-badge">Database</span>
+                        <span class="tech-badge">ML Algorithm</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://github.com/WhiteDragonul/culinary-vitality" target="_blank" rel="noopener noreferrer" class="card-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured row 2 — NexusMods -->
+            <div class="featured-projects nexus-row">
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-cyan"></div>
+                    <div class="card-header">
+                        <div class="card-icon icon-cyan"><i class="fas fa-person-running"></i></div>
+                        <div class="card-badges"><span class="badge badge-nexus">NexusMods</span></div>
+                    </div>
+                    <h3 class="card-title">PRAGMATA — NoClip Mod</h3>
+                    <p class="card-desc" data-i18n="proj.noclip.desc">Mod for <strong>PRAGMATA</strong> (RE Engine) developed with <strong>REFramework</strong> and Lua. Enables free-fly through the map, full keyboard + gamepad support, adjustable speeds, anti-death and out-of-bounds exploration.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Lua</span>
+                        <span class="tech-badge">REFramework</span>
+                        <span class="tech-badge">RE Engine</span>
+                        <span class="tech-badge">Modding</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://www.nexusmods.com/pragmata/mods/35" target="_blank" rel="noopener noreferrer" class="card-link card-link-nexus">
+                            <i class="fas fa-cube"></i> NexusMods
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card featured reveal">
+                    <div class="card-glow glow-cyan"></div>
+                    <div class="card-header">
+                        <div class="card-icon icon-cyan"><i class="fas fa-eye"></i></div>
+                        <div class="card-badges"><span class="badge badge-nexus">NexusMods</span></div>
+                    </div>
+                    <h3 class="card-title">PRAGMATA — FOV Changer Mod</h3>
+                    <p class="card-desc" data-i18n="proj.fov.desc">Mod for <strong>PRAGMATA</strong> that adds a slider for modifying the Field of View (30&ndash;160) in real time, integrated into the REFramework overlay, with a system preventing automatic camera reset by the engine.</p>
+                    <div class="card-tech">
+                        <span class="tech-badge">Lua</span>
+                        <span class="tech-badge">REFramework</span>
+                        <span class="tech-badge">RE Engine</span>
+                        <span class="tech-badge">Modding</span>
+                    </div>
+                    <div class="card-links">
+                        <a href="https://www.nexusmods.com/pragmata/mods/38" target="_blank" rel="noopener noreferrer" class="card-link card-link-nexus">
+                            <i class="fas fa-cube"></i> NexusMods
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects grid -->
+            <div class="projects-grid">
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-brain"></i></div></div>
+                    <h3 class="card-title">NeuralQuest <span class="card-subtitle">MindTrainer</span></h3>
+                    <p class="card-desc" data-i18n="proj.mindtrainer.desc">Interactive app for training cognitive abilities through mini-games focused on memory, reaction time and math.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Tkinter</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/MindTrainer" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-lock"></i></div></div>
+                    <h3 class="card-title">VaultGuard <span class="card-subtitle">Password Manager</span></h3>
+                    <p class="card-desc" data-i18n="proj.password.desc">Application for storing and managing passwords, using Python with SQLite3 and Tkinter.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">SQLite3</span><span class="tech-badge">Tkinter</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/Password-Manager" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-wand-magic-sparkles"></i></div></div>
+                    <h3 class="card-title">MagePower: Ascended <span class="card-subtitle">v0.5</span></h3>
+                    <p class="card-desc" data-i18n="proj.mage05.desc">Advanced version with multiple levels (Underworld, Overworld, Imaginary World), AI for enemy behavior and modular code.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Pygame</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/Mage-Power-v0.5" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-gamepad"></i></div></div>
+                    <h3 class="card-title">MagePower: Origins <span class="card-subtitle">First Game</span></h3>
+                    <p class="card-desc" data-i18n="proj.mage.desc">My first game written entirely from scratch in Python with Pygame. The starting point of my game development journey.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Pygame</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/MagePowerGame" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-list-check"></i></div></div>
+                    <h3 class="card-title">FlowTask <span class="card-subtitle">Task Manager</span></h3>
+                    <p class="card-desc" data-i18n="proj.tasks.desc">Task management application built in Python with the Tkinter library.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Tkinter</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/Lista-De-Taskuri" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-calculator"></i></div></div>
+                    <h3 class="card-title">CalcForge <span class="card-subtitle">Calculator App</span></h3>
+                    <p class="card-desc" data-i18n="proj.calc.desc">Calculator application built in Python with a graphical interface in Tkinter.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Tkinter</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/Calculator" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-computer-mouse"></i></div></div>
+                    <h3 class="card-title">ClickRush <span class="card-subtitle">Clicker Game</span></h3>
+                    <p class="card-desc" data-i18n="proj.clicker.desc">Clicker-type game developed in Python. A simple yet engaging project.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/clickergame" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-server"></i></div></div>
+                    <h3 class="card-title">NexusAPI <span class="card-subtitle">REST API</span></h3>
+                    <p class="card-desc" data-i18n="proj.api.desc">API project developed in Python. Implementation and testing of REST endpoints.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">REST API</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/API" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fab fa-java"></i></div></div>
+                    <h3 class="card-title">ClassCraft <span class="card-subtitle">OOP Lab</span></h3>
+                    <p class="card-desc" data-i18n="proj.oop.desc">Laboratory project for the Object-Oriented Programming course, developed in Java.</p>
+                    <div class="card-tech"><span class="tech-badge">Java</span><span class="tech-badge">OOP</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/POO-22c21b" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-users"></i></div></div>
+                    <h3 class="card-title">CodeSync <span class="card-subtitle">Team OOP Project</span></h3>
+                    <p class="card-desc" data-i18n="proj.oopteam.desc">Collaborative OOP project developed together with teammates Onica, Dragaescu and Patrascu.</p>
+                    <div class="card-tech"><span class="tech-badge">OOP</span><span class="tech-badge">Team Project</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/Proiect-POO-Prozan-Onica-Dragaescu-Patrascu" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-car"></i></div></div>
+                    <h3 class="card-title">ElectraDrive <span class="card-subtitle">OOP Vehicle Sim</span></h3>
+                    <p class="card-desc" data-i18n="proj.vehicul.desc">Implementation of three instances of the Electric class &mdash; object-oriented project.</p>
+                    <div class="card-tech"><span class="tech-badge">OOP</span><span class="tech-badge">Java</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/MainVehicul" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+                <div class="project-card reveal">
+                    <div class="card-header"><div class="card-icon small"><i class="fas fa-cubes"></i></div></div>
+                    <h3 class="card-title">ByteLab <span class="card-subtitle">Python Experiments</span></h3>
+                    <p class="card-desc" data-i18n="proj.mini.desc">Collection of mini-projects and experiments in Python. Various explored ideas and concepts.</p>
+                    <div class="card-tech"><span class="tech-badge">Python</span></div>
+                    <div class="card-links"><a href="https://github.com/WhiteDragonul/MiniProjects" target="_blank" rel="noopener noreferrer" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                </div>
+            </div>
+
+            <div class="projects-cta reveal">
+                <a href="https://github.com/WhiteDragonul" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                    <i class="fab fa-github"></i> <span data-i18n="proj.cta">View all projects on GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements -->
+    <section id="achievements" class="achievements">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="ach.tag">Beyond code</span>
+                <h2 class="section-title" data-i18n="ach.title">Achievements &amp; Activities</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-microphone"></i></div>
+                    <h3 data-i18n="ach.mc.title">MC &amp; Presenter</h3>
+                    <p data-i18n="ach.mc.desc">Main presenter at all events of Theoretical High School &ldquo;Dun&#x103;rea&rdquo; and MC at &ldquo;Students&apos; Evening&rdquo; &mdash; on the stage of the &ldquo;Fani Tardini&rdquo; Dramatic Theatre in Galati.</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-earth-europe"></i></div>
+                    <h3 data-i18n="ach.erasmus.title">Erasmus+</h3>
+                    <p data-i18n="ach.erasmus.desc">Participant in the international Erasmus+ project with mobility to Croatia and hosting students from Turkey in Romania.</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                    <h3 data-i18n="ach.esports.title">eSports Leader</h3>
+                    <p data-i18n="ach.esports.desc">Founder and In-Game Leader (IGL) of a competitive Dead by Daylight team. Responsible for strategy, team dynamics and communication under pressure.</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-users"></i></div>
+                    <h3 data-i18n="ach.council.title">Student Council</h3>
+                    <p data-i18n="ach.council.desc">President and subsequently Secretary of the Student Council at Theoretical High School &ldquo;Dun&#x103;rea&rdquo; &mdash; representing student interests and mediating between students and school management.</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-heart"></i></div>
+                    <h3 data-i18n="ach.volunteer.title">Volunteering</h3>
+                    <p data-i18n="ach.volunteer.desc">Volunteer supporting the integration of children with Down syndrome, and volunteer in the organizing team of the Galati Half-Marathon.</p>
+                </div>
+                <div class="achievement-card reveal">
+                    <div class="achievement-icon"><i class="fas fa-guitar"></i></div>
+                    <h3 data-i18n="ach.music.title">Music &amp; Dance</h3>
+                    <p data-i18n="ach.music.desc">Passionate guitarist and competitive ballroom dancer &mdash; discipline, perseverance and coordination transferred into coding as well.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="contact.tag">Let&apos;s stay in touch</span>
+                <h2 class="section-title" data-i18n="contact.title">Contact</h2>
+                <div class="section-line"></div>
+            </div>
+            <!-- Collaboration banner -->
+            <div class="collab-banner reveal">
+                <div class="collab-left">
+                    <div class="collab-status">
+                        <span class="status-dot"></span>
+                        <span data-i18n="collab.status">Available for collaboration</span>
+                    </div>
+                    <h3 data-i18n="collab.title">Open to partnerships &amp; company collaborations</h3>
+                    <p data-i18n="collab.desc">Whether you&apos;re a company looking for a developer, a team in need of a collaborator, or a studio that needs someone for playtesting and debugging &mdash; I&apos;m open to discussing any opportunity.</p>
+                </div>
+                <div class="collab-right">
+                    <a href="mailto:borghimada233@gmail.com" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> <span data-i18n="collab.btn">Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card reveal">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <h3 data-i18n="contact.email">Email</h3>
+                    <a href="mailto:borghimada233@gmail.com">borghimada233@gmail.com</a>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon icon-dark"><i class="fab fa-github"></i></div>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/WhiteDragonul" target="_blank" rel="noopener noreferrer">@WhiteDragonul</a>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon icon-insta"><i class="fab fa-instagram"></i></div>
+                    <h3>Instagram</h3>
+                    <a href="https://instagram.com/whosbogdy" target="_blank" rel="noopener noreferrer">@whosbogdy</a>
+                </div>
+                <div class="contact-card reveal">
+                    <div class="contact-icon icon-discord2"><i class="fab fa-discord"></i></div>
+                    <h3 data-i18n="contact.discord.handle">Discord Handle</h3>
+                    <a href="https://discord.com/users/whitedbd" target="_blank" rel="noopener noreferrer">@whitedbd</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#home" class="nav-logo">
+                    <span class="logo-bracket">&lt;</span>PB<span class="logo-bracket">/&gt;</span>
+                </a>
+                <p class="footer-text">Prozan Bogdan-M&#x103;d&#x103;lin &copy; 2026</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/WhiteDragonul" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://instagram.com/whosbogdy" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:borghimada233@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://discord.gg/jfuR8tqVt" target="_blank" rel="noopener noreferrer" title="Discord"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
